@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angry Bird</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+    <!-- AOS  -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
+</head>
+<body onload="loader()">
+<div class="container-fluid">
+  <!-- loader for splash screen -->
+  <div id="loading"></div>  
+
+  <!-- navbar starts here  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./index.html">KOTAK-BANK</a>
+        <img src="https://www.kotak.com/content/dam/Kotak/kotak-logo.png" style="background-color: red;" alt="">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+              <a class="nav-link" href="./customers.html">Get Start</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <!-- navbar ends here  -->
+    <!-- here content starts here -->
+<div class="container-fluid hero-content">
+  <div class="row align-items-center">
+    <div class="col-md-6 col-sm-12 text-center" data-aos="fade-up">
+
+       <h2 >Spark foundation presents</h2>
+         <h4>BASIC BANKING SYSTEM</h4>
+          <h1>“Money Transfer For You got Easy.”</h1>
+          <h4 class="ml6">
+            <span class="text-wrapper">
+              <span class="letters">New Accounts can be created</span>
+            </span>
+          </h4>
+          <h4>By Vidyashree D. Kyatari</h4>
+      <br>
+      <br>
+      <a class="get-started" href="./customers.html">Get Started Here</a>
+    </div>
+    <div class="col-md-6 col-sm-12 text-center" data-aos="fade-left">
+      <div class="hero-img-div">
+        <img style="width: 100%" src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="img-showing-money-transfer">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- here content ends here -->
+<!-- footer starts here -->
+    <footer>
+
+      <div class="row text-center">
+        <div class="col-md-6">
+          <p><a href="https://www.thesparksfoundationsingapore.org">The Sparks Foundation</a>.</p>
+
+        </div>
+        <div class="col-md-6 text-center">
+            <ul class="social-icons">
+
+
+              <li><a target="_blank" class="google" href="mailto:vidyashreekyatari@gmail.com"><i class="fab fa-google fa-2x"></i></a></li>
+              <li><a target="_blank" class="linkedin" href="https://www.linkedin.com/in/vidyashree-kyatari-138638202/"><i class="fab fa-linkedin fa-2x"></i></a></li>
+              <li><a target="_blank" class="github" href="https://github.com/VidyashreeKyatari"><i class="fab fa-github fa-2x"></i></a></li>
+            </ul>
+        </div>
+      </div>
+    </footer>
+    </div>
+    <!-- footer ends here -->
+    <!-- spalsh screen js -->
+    <script>
+      var preloader = document.getElementById("loading");
+      function loader(){
+        preloader.style.display = 'none';
+      }
+    </script>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+
+    <!-- aos data  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 700,
+      });
+
+      var textWrapper = document.querySelector('.ml6 .letters');
+      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+      anime.timeline({loop: true})
+        .add({
+          targets: '.ml6 .letter',
+          translateY: ["1.1em", 0],
+          translateZ: 0,
+          duration: 750,
+          delay: (el, i) => 50 * i
+        }).add({
+          targets: '.ml6',
+          opacity: 0,
+          duration: 1000,
+          easing: "easeOutExpo",
+          delay: 1000
+        });
+    </script>
+
+</body>
+</html>

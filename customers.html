@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angry Bird</title>
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="assets/css/customer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+          background-image: url('YesBank.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          max-width: 300px;
+          margin: auto;
+          text-align: center;
+          font-family: arial;
+        }
+
+        .title {
+          color: grey;
+          font-size: 18px;
+        }
+
+</style>
+</head>
+
+<body>
+    <!-- navbar starts here  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="./index.html">KOTAK-BANK</a>
+        <img src="https://www.kotak.com/content/dam/Kotak/kotak-logo.png" style="background-color: red;" alt="">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#aboutUsModal">About Bank </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#myAccountModal">My Account </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar ends here  -->
+
+        <div style="display: none;" class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    <div class="my-info text-center">
+        <!-- <h2>Name:vidyashree kyatari</h2> -->
+        <h4>Net Bank Balance : ₹ <span id="myAccountBalance">50000</span></h4>
+
+        <button class="btn btn-info" data-toggle="modal" data-target="#sendMoney">Send Money</button>
+        <a class="btn btn-info" href="" data-toggle="modal" data-target="#transactionHistory">See All Transaction</a>
+        <button class="btn btn-info" data-toggle="modal" data-target="#createaccount" >Create Account</button>
+        <button class="btn btn-info" data-toggle="modal" data-target="#depositeacc" >Deposite My Account</button>
+    </div>
+
+    <!-- Modal send money -->
+    <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send Money</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <input type="text" id="enterAccNo" class="form-control" placeholder="Recipient's Account No"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" id="enterName" class="form-control" placeholder="Recipient's username"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">₹</span>
+                            </div>
+                            <input type="text" id="enterAmount" class="form-control" placeholder=" Enter Amount"
+                                aria-label="Amount (to the nearest dollar)">
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="mySendMoney()" class="btn btn-success" data-dismiss="modal">Send
+                        Money</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal transaction History-->
+    <div class="modal fade" id="transactionHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Transaction History</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">Acc No</th>
+                              <th scope="col">Amount</th>
+                              <th scope="col">Date</th>
+                            </tr>
+                          </thead>
+                          <tbody id="transaction-history">
+                          </tbody>
+                        </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create account modal -->
+    <div class="modal fade" id="createaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create New Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form >
+                      <div class="form-group">
+                        <label for="name">Your Account No.</label>
+                        <input type="text" readonly="" class="form-control" id="newaccno" aria-describedby="nameHelp" >
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="name" class="form-control" id="name" required="" aria-describedby="nameHelp" placeholder="Enter name">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" required="" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                      </div>
+                      <div class="form-group">
+                        <label for="amount">Primary Amount</label>
+                        <input type="text" class="form-control" id="amount" required="" placeholder="Enter amount">
+                      </div>
+                      <a class="btn btn-success" type="submit" onclick="AddMember()" style="background-color: #42ba42;color: #fff " >Submit</a>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Modal My Account-->
+    <div class="modal fade" id="myAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" >
+                    <div style="white-space: pre-wrap;">
+                        <img style="border-radius: 50%;width:60%" src="https://1.bp.blogspot.com/-Zubts1OQY7I/X2qyYHiLysI/AAAAAAAAEZg/L8E5GCidPTM5sQIPRtM0e4lnurAVyvvJgCLcBGAsYHQ/s833/Deepthi%2BSunaina%2B2.jpg" alt="John">
+                    </div>
+                      
+                      
+                      
+                      <div class="container">
+                         <div class="row" style="place-content: center;">
+                            <h2>Vidyashree D. Kyatari</h2>
+                        </div>
+                        <div class="row" style="place-content: center;">
+                            <p class="title">Python Developer</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                              Branch
+                            </div>
+                            <div class="col-sm-6">
+                              Nilam Nagar, Solapur
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-6">
+                              Account No.
+                            </div>
+                            <div class="col-sm-6">
+                              672500
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-6">
+                              Total Amount
+                            </div>
+                            <div id="myAccountBalance" class="col-sm-6">
+                              ₹<span id="myAccountBalance">50000</span>
+                            </div>
+                          </div>
+
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal About Us-->
+    <div class="modal fade" id="aboutUsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">About Bank</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>Banking System By Vidya &#128525;</h4>
+                    <p>A banking system is a group or network of institutions that provide financial services. The major types of banking systems include those made up of commercial, national, and investment banks and credit unions may also be part of a banking system</p>
+                    <ul>
+                        <li>Create Account</li>
+                        <li>Send Money To Accountant</li>
+                        <li>Diposite To My Account</li>
+                        <li>Check Balance & History of transactions</li>
+                        <li>My Profile</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Disposite My Account -->
+    <div class="modal fade" id="depositeacc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Deposite My Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">₹</span>
+                            </div>
+                            <input type="text" id="depositeamount" class="form-control" placeholder=" Enter Amount">
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="depositeMoney()" class="btn btn-success" data-dismiss="modal">Deposite</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table  -->
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover" style="background-color: #fff">
+                <thead>
+                    <tr class="table-info">
+                        <th scope="col"class="name">Account No.</th>
+                        <th scope="col"class="name">Name</th>
+                        <th scope="col"class="name">E-mail id</th>
+                        <th scope="col"class="name">Bank Balance</th>
+                    </tr>
+                </thead>
+                <tbody id="newrow">
+                    <tr id="672501" >
+                        <td id="srno" class="name1"scope="row">672501</td>
+                        <td  class="name1">Mrityunjay Dasari</td>
+                        <td  class="name1">mrityudasari@gmail.com</td>
+                        <td  class="name1">
+                            <p id="mrityudasari672501">15000</p>
+                        </td>
+                    </tr>
+                    <tr id="672502" >
+                        <td id="srno" class="name2"scope="row">672502</td>
+                        <td class="name2">Aishwarya Jadav</td>
+                        <td class="name2">aishwarya@email.com</td>
+                        <td class="name2">
+                            <p id="aishwarya672502">24000</p>
+                        </td>
+                    </tr>
+                    <tr id="672503" >
+                        <td id="srno" class="name1"scope="row">672503</td>
+                        <td  class="name1">Manasi Kale</td>
+                        <td  class="name1">manasi@email.com</td>
+                        <td  class="name1">
+                            <p id="manasi672503">50000</p>
+                        </td>
+                    </tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+</body>
+
+<script type="text/javascript">
+    var AccNo = 672503;
+    $(document).ready(function(){
+        //$('.alert').alert('close')
+    })
+    
+    $('#newaccno').val(AccNo+1)
+    function AddMember(){
+        AccNo++;
+       var name = $('#name').val();
+       var email = $('#email').val();
+       var amount = $('#amount').val();
+       const myArr = email.split("@");
+       var amountId = myArr[0]+AccNo;
+       var row = '<tr >'+
+                        '<td id="'+AccNo+'" class="name1" scope="row">'+AccNo+'</td>'+
+                        '<td  class="name1">'+name+'</td>'+
+                        '<td  class="name1">'+email+'</td>'+
+                        '<td  class="name1">'+
+                            '<p id="'+amountId+'">'+amount+'</p>'+
+                        '</td>'
+                    '</tr>';
+                     $('#createaccount').modal('toggle');
+                    $('.alert').alert()
+       $('#newrow').append(row);
+       $('#newaccno').val(AccNo)
+       $('#name').val('');
+       $('#email').val('');
+       $('#amount').val('');
+    }
+</script>
+</html>
