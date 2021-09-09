@@ -38,6 +38,7 @@ function mySendMoney(){
    var getEmail = $('.'+emailClass).text();
    var EnterEmail = $('#enterName').val()+"@gmail.com";
 
+console.log(getAcc)
    if(getAcc === AccNo && getEmail === EnterEmail){
       //alert("Your Account Verified"+getEmail)
 
