@@ -218,7 +218,7 @@
                             <h2>Vidyashree D. Kyatari</h2>
                         </div>
                         <div class="row" style="place-content: center;">
-                            <p class="title">Python Developer</p>
+                            <p class="title">Python Developer &#128540; </p>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -330,25 +330,25 @@
                 </thead>
                 <tbody id="newrow">
                     <tr id="672501" >
-                        <td id="srno" class="name1"scope="row">672501</td>
-                        <td  class="name1">Mrityunjay Dasari</td>
-                        <td  class="name1">mrityudasari@gmail.com</td>
+                        <td id="srno" scope="row">672501</td>
+                        <td  class="name672501">Mrityunjay Dasari</td>
+                        <td  class="email672501">mrityudasari@gmail.com</td>
                         <td  class="name1">
                             <p id="mrityudasari672501">15000</p>
                         </td>
                     </tr>
                     <tr id="672502" >
-                        <td id="srno" class="name2"scope="row">672502</td>
-                        <td class="name2">Aishwarya Jadav</td>
-                        <td class="name2">aishwarya@email.com</td>
+                        <td id="srno" scope="row">672502</td>
+                        <td class="name672502">Aishwarya Jadav</td>
+                        <td class="email672502">aishwarya@email.com</td>
                         <td class="name2">
                             <p id="aishwarya672502">24000</p>
                         </td>
                     </tr>
                     <tr id="672503" >
-                        <td id="srno" class="name1"scope="row">672503</td>
-                        <td  class="name1">Manasi Kale</td>
-                        <td  class="name1">manasi@email.com</td>
+                        <td id="srno" scope="row">672503</td>
+                        <td  class="name672503">Manasi Kale</td>
+                        <td  class="email672503">manasi@email.com</td>
                         <td  class="name1">
                             <p id="manasi672503">50000</p>
                         </td>
@@ -366,29 +366,30 @@
 </body>
 
 <script type="text/javascript">
-    var AccNo = 672503;
+    var AccNo = 672504;
     $(document).ready(function(){
         //$('.alert').alert('close')
     })
     
-    $('#newaccno').val(AccNo+1)
+    $('#newaccno').val(AccNo)
     function AddMember(){
-        AccNo++;
+        //AccNo++;
        var name = $('#name').val();
        var email = $('#email').val();
        var amount = $('#amount').val();
        const myArr = email.split("@");
        var amountId = myArr[0]+AccNo;
        var row = '<tr >'+
-                        '<td id="'+AccNo+'" class="name1" scope="row">'+AccNo+'</td>'+
-                        '<td  class="name1">'+name+'</td>'+
-                        '<td  class="name1">'+email+'</td>'+
+                        '<td id="'+AccNo+'" scope="row">'+AccNo+'</td>'+
+                        '<td  class="name'+AccNo+'">'+name+'</td>'+
+                        '<td  class="email'+AccNo+'">'+email+'</td>'+
                         '<td  class="name1">'+
                             '<p id="'+amountId+'">'+amount+'</p>'+
                         '</td>'
                     '</tr>';
                      $('#createaccount').modal('toggle');
                     $('.alert').alert()
+                    AccNo++;
        $('#newrow').append(row);
        $('#newaccno').val(AccNo)
        $('#name').val('');

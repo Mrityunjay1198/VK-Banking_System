@@ -31,39 +31,58 @@ function mySendMoney(){
    var enterAmount = $('#enterAmount').val();
    var enterName = $('#enterName').val()+AccNo;
    
+   var emailClass = "email" + AccNo;
 
-   if (enterAmount > myAccountBalance) {
-      alert("Insufficient Balance.")
-   } else {
-      //alert(AccNo)
-      var availamt = $('#'+enterName).text()
-      var total = parseInt(availamt)+parseInt(enterAmount)
-      $('#'+enterName).text(total);
-      var datetime = new Date().toISOString().slice(0, 19).replace('T', ' ');
-      alert("Acc "+AccNo+" Credited with Rs."+enterAmount+".00, "+datetime+" VK Bank . Aval Bal Rs."+total+" CR. Helpline 18001802222-VK-Kotak")
+   // Get data for verify account
+   var getAcc = $('#'+AccNo+' #srno').text();
+   var getEmail = $('.'+emailClass).text();
+   var EnterEmail = $('#enterName').val()+"@gmail.com";
 
-      // Debit from account
-      myAccountBalance = parseInt(myAccountBalance) - parseInt(enterAmount);
-      $('#myAccountBalance').text(myAccountBalance);
+   if(getAcc === AccNo && getEmail === EnterEmail){
+      //alert("Your Account Verified"+getEmail)
 
-      // Transaction History
+      if (enterAmount > myAccountBalance) {
+         alert("Insufficient Balance.")
+      } else {
+         //alert(AccNo)
+         var availamt = $('#'+enterName).text()
+         var total = parseInt(availamt)+parseInt(enterAmount)
+         $('#'+enterName).text(total);
+         var datetime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+         alert("Acc "+AccNo+" Credited with Rs."+enterAmount+".00, "+datetime+" From VK Bank . Aval Bal Rs."+total+" CR. Helpline 18001802222-VK-Kotak")
 
-      var dateObj = new Date();
-      var month = dateObj.getUTCMonth() + 1; //months from 1-12
-      var day = dateObj.getUTCDate();
-      var year = dateObj.getUTCFullYear();
+         // Clear fields
+         $('#enterName').val('');
+         $('#enterAmount').val('');
 
-      newdate = day + "/" + month + "/" + year;
+         // Debit from account
+         myAccountBalance = parseInt(myAccountBalance) - parseInt(enterAmount);
+         $('#myAccountBalance').text(myAccountBalance);
 
-      var tableRow = '<tr>'+
-                        '<th scope="row">'+AccNo+'</th>'+
-                        '<td>₹'+enterAmount+'</td>'+
-                        '<td>'+newdate+'</td>'+
-                      '</tr>';
-                      
-      $('#transaction-history').append(tableRow);
-      
+         // Transaction History
+
+         var dateObj = new Date();
+         var month = dateObj.getUTCMonth() + 1; //months from 1-12
+         var day = dateObj.getUTCDate();
+         var year = dateObj.getUTCFullYear();
+
+         newdate = day + "/" + month + "/" + year;
+
+         var tableRow = '<tr>'+
+                           '<th scope="row">'+AccNo+'</th>'+
+                           '<td>₹'+enterAmount+'</td>'+
+                           '<td>'+newdate+'</td>'+
+                         '</tr>';
+                         
+         $('#transaction-history').append(tableRow);
+      }
+   }else{
+      alert("Sorry Account not found. Please check credentials")
+      $('#enterName').val('');
+         $('#enterAmount').val('');
    }
+
+   
 }
 
 function depositeMoney(){
