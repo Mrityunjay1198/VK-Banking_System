@@ -5,4 +5,5 @@ A very basic banking system for transfering virtual money.
 HTML, CSS, Bootstrap and Javascript
 
 # Screencast
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/UoaEMtRedGU/0.jpg)](https://youtu.be/UoaEMtRedGU)
+Banking System By Vidya 😍
+A banking system is a group or network of institutions that provide financial services. The major types of banking systems include those made up of commercial, national, and investment banks and credit unions may also be part of a banking system
